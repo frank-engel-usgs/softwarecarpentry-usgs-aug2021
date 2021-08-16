@@ -26,12 +26,12 @@ to clone this repository to your local machine. The project page for this reposi
   Open a git bash window in the location you wish your clone of the repository to live.
   Then, issue the command:
 
-  ```buildoutcfg
+  ```bash
   git clone https://annajiat.github.io/2021-08-17-usgs-ngwos-online/
   ```
 
   Conversely, if using ssh, the command would be:
-```buildoutcfg
+```bash
 git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
 ```
 </details>
@@ -59,7 +59,7 @@ Let's do this for our repo. The steps are well discussed and outlined in the
 First, make sure your repo is up to date. If you just did Step One, you should be good to go, but just in case, you can 
 issue the following commands from a git bash window:
 
-```buildoutcfg
+```bash
 git checkout main
 git fetch origin
 git reset --hard origin/main
@@ -68,7 +68,7 @@ git reset --hard origin/main
 Technically, this is a heavy handed approach, but it ensures we are all on the same page. In practice, I typically
 just do:
 
-```buildoutcfg
+```bash
 git fetch --all
 git pull
 ```
@@ -80,8 +80,22 @@ copy of the repo. This is handy for large repos where several feature updates an
 Now that you have the most up to date version of the repo on your machine, you can create a new branch from the currnet
 version of the `master` by (replace `engel` with your last name):
 
-```buildoutcfg
+```bash
 git checkout -b fb-engel
 ```
 
+This will create a new branch called `fb-engel`, which is an exact copy of `main` and move you into that branch.
+Your git bash should now look something like this:
+
+```bash
+fengel@IGSKIKCWLTFENG2 MINGW64 /c/REPOS/softwarecarpentry-usgs-aug2021 (main)
+$ git checkout -b fb-engel
+Switched to a new branch 'fb-engel'
+
+fengel@IGSKIKCWLTFENG2 MINGW64 /c/REPOS/softwarecarpentry-usgs-aug2021 (fb-engel)
+$
+
+```
+
+Now you are working in your own local feature branch of the code, and the `main` branch is safe! 
 
