@@ -230,7 +230,58 @@ git push --set-upstream origin fb-engel
 ```
 *be sure to use your branch name here.*
 
-This will prompt you to provide ssh credentials, and then will upload the results. 
+This will prompt you to provide ssh credentials, and then will upload the results. You can check that your branch was
+successsfully upload over at the [Project page](https://github.com/frank-engel-usgs/softwarecarpentry-usgs-aug2021) by
+clicking on the branches icon:
+![branches](assets/branches.png).
+
+### Creating a Pull Request
+The real power of git is in protecting collaboratively worked on code. As we've already discussed, the master (or main)
+branch is always "clean", and is supposed to be ready to deploy. Work that you do on a collaborative coding 
+project is done in a *feature branch workflow*. Once you've written your code and have your new feauture, bug, 
+or issue solved, typically you will want someone on your team to review it to ensure it doesn't break anything
+and actually fixes/does what is expected. The mechanism for this review process is called *pull request* (in GitLab
+it is called a *merge request*, but same concept). You can read a lot more about pull requests in this [Atlassian article](https://www.atlassian.com/git/tutorials/making-a-pull-request).
+
+Now we will create a pull request on your newly uploaded branch. First, head on over to the Project Page if you 
+don't already have it up:
+<https://github.com/frank-engel-usgs/softwarecarpentry-usgs-aug2021>
+
+Click on "Pull Requests" near the top:
+![pull requests](assets/pullrequests.png)
+
+Then click on "New Pull Request". You may see a banner message about your new branch, with something like "Compare & Pull Request".
+You can use that link too, and git is smart enough to know that's typically what you want to do. But "New Pull Request" is how 
+we will do it here to ensure you get practice with the full workflow. 
+
+Github will then ask you which branches to compare. In our case the base is `main`, and the compare is `fb-engel` (or your branch).
+![compare](assets/compare%20branches.png)
+
+This will create the framework of the pull/merge, with a nice mechanism for comparing changes made with new files, or even changes 
+to existing file. Take a look to see what it did, and when satisfied, click the "Create Pull Request" button. 
+![createpullrequest](assets/createpullreq.png).
+
+The final step is to provide some comments and documentation about the pull request. Typically, here you can assign
+reviewers or labels, or other project tracking metrics. For now, just enter a simple comment about what you did, and
+then click "Create Pull Request". 
+![open the request](assets/createpullreq2.png)
+
+This will create the pull request, and notify any developers on the team (or identified reviewers) that you made
+a request. This page is now ready for other to review the changes you made to the code in an interactive
+manner. 
+![open request](assets/openrequest.png)
+
+Typically, the main developers will look at your code, and provide feedback either in comments at the Pull Request
+level, or even on specific lines of code. For example, anyone can add comment to particular lines of code if there
+is something needing attention there:
+![comments](assets/pullreviewcomments.png).
+
+Once satisfied, a developer can approve the request, and changes will be merged back into the master/main branch. 
+
+
+
+
+
 
 ## Stretch Goals
 Although beyond the skills that you have learned so far in the Software Carpentries workshop, there are some 
