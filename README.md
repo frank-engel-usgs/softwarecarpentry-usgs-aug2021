@@ -270,17 +270,19 @@ axes2 = fig.add_subplot(1, 4, 2)
 axes3 = fig.add_subplot(1, 4, 3)
 axes4 = fig.add_subplot(1, 4, 4)
 
+x = range(10)
+
 axes1.set_ylabel('average')
-axes1.bar(range(10),numpy.mean(data, axis=0))
+axes1.bar(x, numpy.mean(data, axis=0))
 
 axes2.set_ylabel('max')
-axes2.bar(range(10), numpy.max(data, axis=0))
+axes2.bar(x, numpy.max(data, axis=0))
 
 axes3.set_ylabel('min')
-axes3.bar(range(10),numpy.min(data, axis=0))
+axes3.bar(x, numpy.min(data, axis=0))
 
 axes4.set_ylabel('range')
-axes4.bar(range(10),numpy.max(data, axis=0) - numpy.min(data, axis=0))
+axes4.bar(x, numpy.max(data, axis=0) - numpy.min(data, axis=0))
 
 fig.tight_layout()
 
@@ -288,5 +290,35 @@ matplotlib.pyplot.show()
 ```
 
 ![bar plot of stats](assets/stretchstep2img1.png)
+
+</details>
+
+<details>
+    <summary>Solution #3</summary>
+
+Here we can use some tricks in the matplotlib's built in `pyplot.bar` class ([see the docs](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html))
+to allow us to plot multiple bars under one x location to create a grouped bar chart. This is a fast solution.
+It should be noted there are more complete (and pretty) solutions you can create. 
+
+```python
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+axes = fig.add_subplot()
+
+x = numpy.arange(data.shape[1]) # This time using a more generalizable approach
+                                # by pulling the shape of data and creating an array
+
+bar_width = 0.3
+bar1 = axes.bar(x, numpy.mean(data, axis=0), width=bar_width, color='g')
+bar2 = axes.bar(x + bar_width, numpy.max(data, axis=0), width=bar_width, color='r')
+bar3 = axes.bar(x + bar_width*2, numpy.min(data, axis=0), width=bar_width,  color='b')
+bar4 = axes.bar(x + bar_width*3, numpy.max(data, axis=0) - numpy.min(data, axis=0), width=bar_width,  color='y')
+
+# Fix the x-axes.
+axes.legend( (bar1, bar2, bar3, bar4), ('Mean', 'Max', 'Min', 'Range') )
+matplotlib.pyplot.show()
+
+```
+
+![grouped bar chart](assets/stretchstep3img1.png)
 
 </details>
