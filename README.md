@@ -206,7 +206,33 @@ matplotlib.pyplot.show()
 
 </details>
 
-### Stretch Goals
+## Step four: Share your results
+
+Finally, now that you have a working solution to Steps 1–3, you are ready to share your results with everyone else. 
+To do this, we will push your local results (contained in `fb-<lastname>`) up to the main repository, and then
+create a "pull request" (in GitLab, which USGS uses, this is called a *merge request*, but otherwise the steps are 
+pretty much identical). 
+
+To reconcile local changes and sync them to the remote repository, we use the `push` command. This command will transfer
+commits you've made to a branch up to the server so others can inspect, and ultimated once your change is "approved"
+enable merging of the change into the master (or main) branch. The format for this from a git bash console is
+pretty simple:
+
+```bash
+git push <remote> <origin>
+```
+
+In our case however, we also have to tell git to create the connection between your local branch (`fb-<lastname>`)
+and the remote repository using the `--set-upstream` switch. So, to push your work, you'll need to do:
+
+```bash
+git push --set-upstream origin fb-engel
+```
+*be sure to use your branch name here.*
+
+This will prompt you to provide ssh credentials, and then will upload the results. 
+
+## Stretch Goals
 Although beyond the skills that you have learned so far in the Software Carpentries workshop, there are some 
 interesting stretch goals you can attempt if you want. Solutions to the first 3 stretch goals are given below.
 1. Make a nicer print statement for the statistics printout using the `.format` approach.
