@@ -134,6 +134,6 @@ Your job is to use the skills obtained during the first half of the Software Car
 
   Conversely, if using ssh, the command would be:
 ```bash
-git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
+git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git test
 ```
 </details>
