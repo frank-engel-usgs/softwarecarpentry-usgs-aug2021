@@ -119,8 +119,99 @@ first. This CSV has 365 rows corresponding to day of the year, and 10 columns, c
 
 Your job is to use the skills obtained during the first half of the Software Carpentries workshop to
 
-1. Load the file `/data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv` into a list
+1. Load the file `/data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv` into a numpy array
 2. Summarize the following statistic for each year of record supplied: mean, minimum, maximum, and range
+3. Plot the yearly statistics
+
+<details>
+  <summary>Solution #1</summary>
+  
+  Load the data using numpy. Don't forget to import necessary modules!
+
+  ```python
+%matplotlib inline
+import matplotlib.pyplot
+import numpy
+
+
+data = numpy.loadtxt(fname='data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv', delimiter=',')
+print(data)
+
+[[123.   37.3  44.9 ...  82.3 734.   81.2]
+ [117.   34.8  44.7 ...  81.8 737.   79.1]
+ [115.   36.   46.9 ...  81.8 939.   79.2]
+ ...
+ [ 41.   41.8  52.9 ... 920.   84.7  49.1]
+ [ 40.4  38.5  48.  ... 816.   82.9  48.3]
+ [ 38.3  40.2  46.8 ... 775.   84.3  50.7]]
+  ```
+
+</details>
+
+<details>
+    <summary>Solution #2</summary>
+  Compute the yearly statistics by recalling the `axis=` keyword funtionality in numpy. 
+
+```python
+mean = numpy.mean(data, axis=0)
+min = numpy.min(data, axis=0)
+max = numpy.max(data, axis=0)
+range = max - min
+print(mean)
+print(min)
+print(max)
+print(range)
+
+[ 38.15153425  95.49547945  56.09271233  38.25443836 574.71616438
+ 596.44109589 195.93150685 299.62241096 294.57369863  83.39668493]
+[  0.     0.57   0.     0.    38.4  147.    26.8    0.    53.8    9.35]
+[  159.  2420.  1890.   955. 39200. 11400.  1030. 17800.  2580.   856.]
+[  159.    2419.43  1890.     955.   39161.6  11253.    1003.2  17800.
+  2526.2    846.65]
+```
+</details>
+
+<details>
+    <summary>Solution #3</summary>
+   Make a plot of the yearly statistics using matplotlib and numpy.
+
+```python
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 4, 1)
+axes2 = fig.add_subplot(1, 4, 2)
+axes3 = fig.add_subplot(1, 4, 3)
+axes4 = fig.add_subplot(1, 4, 4)
+
+axes1.set_ylabel('average')
+axes1.plot(numpy.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(numpy.max(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.plot(numpy.min(data, axis=0))
+
+axes4.set_ylabel('range')
+axes4.plot(numpy.max(data, axis=0) - numpy.min(data, axis=0))
+
+fig.tight_layout()
+matplotlib.pyplot.show()
+```
+
+![plot of gage stats](assets/step3img1.png)
+
+</details>
+
+### Stretch Goals
+Although beyond the skills that you have learned so far in the Software Carpentries workshop, there are some 
+interesting stretch goals you can attempt if you want. Solutions to the first 3 stretch goals are given below.
+1. Make a nicer print statement for the statistics printout using the `.format` approach.
+2. Change the plot style to a tight sub-plot of bar graphs rather than the line graphs
+3. Better yet, make a grouped bar graph of the results by year.
+4. Parse the other files, noticing that the format is different for some of them (e.g., the `Discharge.Mean@02035000.csv`
+   file contains a index of each day in the first columm, and `080167500_Guadalupe_SpringBranch_DailyMeanQ_GH.csv`
+   is has 20 columns, corresponding to Q & GH per year).
 
 <details>
   <summary>Solution</summary>
