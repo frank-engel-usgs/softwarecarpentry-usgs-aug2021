@@ -153,14 +153,14 @@ print(data)
   Compute the yearly statistics by recalling the `axis=` keyword funtionality in numpy. 
 
 ```python
-mean = numpy.mean(data, axis=0)
-min = numpy.min(data, axis=0)
-max = numpy.max(data, axis=0)
-range = max - min
-print(mean)
-print(min)
-print(max)
-print(range)
+meanQ = numpy.mean(data, axis=0)
+minQ = numpy.min(data, axis=0)
+maxQ = numpy.max(data, axis=0)
+rangeQ = maxQ - minQ
+print(meanQ)
+print(minQ)
+print(maxQ)
+print(rangeQ)
 
 [ 38.15153425  95.49547945  56.09271233  38.25443836 574.71616438
  596.44109589 195.93150685 299.62241096 294.57369863  83.39668493]
@@ -169,6 +169,9 @@ print(range)
 [  159.    2419.43  1890.     955.   39161.6  11253.    1003.2  17800.
   2526.2    846.65]
 ```
+![tip](assets/tip.png) A note for the observant. We use "rangeQ" etc as variable names becasue `min`, `max`, and 
+`range` are also python functions. Naming variables after exisitng python functions can cause issues later.
+
 </details>
 
 <details>
@@ -214,17 +217,76 @@ interesting stretch goals you can attempt if you want. Solutions to the first 3 
    is has 20 columns, corresponding to Q & GH per year).
 
 <details>
-  <summary>Solution</summary>
-  
-  Open a git bash window in the location you wish your clone of the repository to live.
-  Then, issue the command:
+    <summary>Solution #1</summary>
 
-  ```bash
-  git clone https://annajiat.github.io/2021-08-17-usgs-ngwos-online/
-  ```
+We can use the format functionality in python 3 to create a little more of a readable output of the statistics
+we calculated above. The new [format string](https://docs.python.org/3/library/string.html#format-string-syntax)
+syntax is very powerful. This solution just shows a small snippet of some possibilities. Combining this with
+[list comprehension](https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Comprehensions.html) gives a more meaning way to display the data. 
 
-  Conversely, if using ssh, the command would be:
-```bash
-git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git test
+```python
+print('\n\nYearly statistics for 080167500:')
+print('Average flow:')
+print(['{:.2f}'.format(item) for item in meanQ])
+print('\nMin flow:')
+print(['{:.2f}'.format(item) for item in minQ])
+print('\nMax flow:')
+print(['{:.2f}'.format(item) for item in maxQ])
+print('\nRange:')
+print(['{:.2f}'.format(item) for item in rangeQ])
+
+Yearly statistics for 080167500:
+Average flow:
+['38.15', '95.50', '56.09', '38.25', '574.72', '596.44', '195.93', '299.62', '294.57', '83.40']
+
+Min flow:
+['0.00', '0.57', '0.00', '0.00', '38.40', '147.00', '26.80', '0.00', '53.80', '9.35']
+
+Max flow:
+['159.00', '2420.00', '1890.00', '955.00', '39200.00', '11400.00', '1030.00', '17800.00', '2580.00', '856.00']
+
+Range:
+['159.00', '2419.43', '1890.00', '955.00', '39161.60', '11253.00', '1003.20', '17800.00', '2526.20', '846.65']
 ```
+
+Ultimately, if we *really* wanted a better visualization of the tabular data here, I'd recommend we do our processing 
+in [pandas](https://pandas.pydata.org/pandas-docs/stable/), but that is beyond the scope of this exercise.
+
+</details>
+
+<details>
+    <summary>Solution #2</summary>
+
+The data we visualized before really are not that appropriate for line charts. A better visualization would be 
+bar graphs. We can do this using matplotlib's built in `pyplot.bar` class ([see the docs](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html)). 
+To represent the x-axis, we need a float or array-like variable representing the x coordinates of the bar.
+For now, we can just use `range` to accomplish this, but there are ways to improve on this solution.
+
+```python
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 4, 1)
+axes2 = fig.add_subplot(1, 4, 2)
+axes3 = fig.add_subplot(1, 4, 3)
+axes4 = fig.add_subplot(1, 4, 4)
+
+axes1.set_ylabel('average')
+axes1.bar(range(10),numpy.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.bar(range(10), numpy.max(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.bar(range(10),numpy.min(data, axis=0))
+
+axes4.set_ylabel('range')
+axes4.bar(range(10),numpy.max(data, axis=0) - numpy.min(data, axis=0))
+
+fig.tight_layout()
+
+matplotlib.pyplot.show()
+```
+
+![bar plot of stats](assets/stretchstep2img1.png)
+
 </details>
