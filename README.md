@@ -99,3 +99,41 @@ $
 
 Now you are working in your own local feature branch of the code, and the `main` branch is safe! 
 
+## Step three: create python code
+
+Now we can work on creating the python code necessary to read the supplied data and visualize some 
+USGS streamflow information. The data are in the `/data/` folder and consist of comma separated values (CSV)
+tables with 10-years of daily values gage data for two streamgages. 
+
+```bash
+$ ls data/
+ 080167500_Guadalupe_SpringBranch_DailyMeanGH.csv
+ 080167500_Guadalupe_SpringBranch_DailyMeanQ.csv
+ 080167500_Guadalupe_SpringBranch_DailyMeanQ_GH.csv
+'Discharge.Mean@02035000.csv'
+```
+
+The structure of each file is similar (but not exactly the same, so beware). Let's use `/data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv`
+first. This CSV has 365 rows corresponding to day of the year, and 10 columns, corresponding the daily mean discharge (Q) per year. The data span 
+2011-01-01 to 202-12-30. 
+
+Your job is to use the skills obtained during the first half of the Software Carpentries workshop to
+
+1. Load the file `/data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv` into a list
+2. Summarize the following statistic for each year of record supplied: mean, minimum, maximum, and range
+
+<details>
+  <summary>Solution</summary>
+  
+  Open a git bash window in the location you wish your clone of the repository to live.
+  Then, issue the command:
+
+  ```bash
+  git clone https://annajiat.github.io/2021-08-17-usgs-ngwos-online/
+  ```
+
+  Conversely, if using ssh, the command would be:
+```bash
+git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
+```
+</details>
