@@ -117,7 +117,7 @@ The structure of each file is similar (but not exactly the same, so beware). Let
 first. This CSV has 365 rows corresponding to day of the year, and 10 columns, corresponding the daily mean discharge (Q) per year. The data span 
 2011-01-01 to 202-12-30. 
 
-Your job is to use the skills obtained during the first half of the Software Carpentries workshop to
+Your job is to use the skills obtained during the first half of the Software Carpentries workshop to:
 
 1. Load the file `/data/080167500_Guadalupe_SpringBranch_DailyMeanQ.csv` into a numpy array
 2. Summarize the following statistic for each year of record supplied: mean, minimum, maximum, and range
