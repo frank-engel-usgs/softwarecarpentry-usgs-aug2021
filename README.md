@@ -27,13 +27,18 @@ to clone this repository to your local machine. The project page for this reposi
   Then, issue the command:
 
   ```bash
-  git clone https://annajiat.github.io/2021-08-17-usgs-ngwos-online/
+   git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
   ```
 
   Conversely, if using ssh, the command would be:
 ```bash
-git clone git@github.com:frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
+git clone https://github.com/frank-engel-usgs/softwarecarpentry-usgs-aug2021.git
 ```
+If this is the first time you have connected to the repo, you will likley get a warning about the authenticity of the 
+   repo. If you trust the repo source (Frank Engel, USGS), then you can answer yes to the prompt to continue the clone.
+![trust}(assets/auth.png)
+   
+   Note: ssh is generally preferred practice over https for repositories in USGS.
 </details>
 
 ## Step two: Create a local branch
