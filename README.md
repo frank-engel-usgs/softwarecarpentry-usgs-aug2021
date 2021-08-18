@@ -48,14 +48,14 @@ in git is handled through branching. There are a couple of different approaches 
 the most popular, and certainly most used among USGS is the 
 [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
 
-In this wrokflow, the `master` (or `main` if using github) branch of the repository always represents the most up-to-date and fully
+In this workflow, the `master` (or `main` if using github) branch of the repository always represents the most up-to-date and fully
 functioning code. In essence, the `main` branch should be deployable code, software, or whatever is the 
 focus of your collaborative work. When someone wishes to edit code to create a new feature, fix a bug, or
 update documentation, they will create a branch off of the `main` in which to do any edits. This way, the main
 copy of the code is always the most recent *working* copy, and any changes you do in a branch will not break
 the code for any other users. 
 
-In this step, we will create a new feature branch in your repo called `fp-<lastname>`, where `fp` is short
+In this step, we will create a new feature branch in your repo called `fb-<lastname>`, where `fb` is short
 for "feature branch" and `<lastname>` is your name. So, for example, I would create a branch called `fb-engel`.
 
 Let's do this for our repo. The steps are well discussed and outlined in the 
@@ -71,7 +71,7 @@ git fetch origin
 git reset --hard origin/main
 ```
 
-Technically, this is a heavy handed approach, but it ensures we are all on the same page. In practice, I typically
+Technically, this is a heavy-handed approach, but it ensures we are all on the same page. In practice, I typically
 just do:
 
 ```bash
